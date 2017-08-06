@@ -18,12 +18,15 @@ public class Random extends Critter
         super(x,y,color,length);
     }
 
-    public void reactTo(Critter c)
+    public void reactTo(Critter c, double width, double height)
     {
         //implement
         java.util.Random random = new java.util.Random();
         x += random.nextInt(41) - 20;
         y += random.nextInt(41) - 20;
+
+        checkBounds(width,height);
     }
+
 
 }

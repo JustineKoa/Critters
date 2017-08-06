@@ -13,6 +13,8 @@ import java.util.ArrayList;
 public class CritterController {
     private ArrayList<Critter> critters;
     private final int LENGTH = 50;
+    private double canvasWidth;
+    private double canvasHeight;
 
     /** Some constants that can be used throughout the class */
     private static final int RUNNER = 0;
@@ -30,15 +32,19 @@ public class CritterController {
         return critters;
     }
 
+    public void setCanvasBounds(double width, double height){
+        canvasWidth = width;
+        canvasHeight = height;
+    }
+
     public void critterInteract()
     {
         for(Critter c : critters)
         {
             //Implement
             Critter d = c.findClosest(critters, c);
-            c.reactTo(d);
+            c.reactTo(d,canvasWidth,canvasHeight);
         }
-
     }
 
     public void addCritter(int x, int y, int t)

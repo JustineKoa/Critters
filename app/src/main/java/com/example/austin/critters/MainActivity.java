@@ -32,20 +32,26 @@ public class MainActivity extends AppCompatActivity {
         critterView.setCritter(0);
     }
 
-    public void startStopButtonClick(View view)
-    {
-        CritterView critterView = (CritterView)findViewById(R.id.CritterView);
-        Button startstop = (Button)findViewById(R.id.startStop);
+    public void startStopButtonClick(View view) {
+        CritterView critterView = (CritterView) findViewById(R.id.CritterView);
+        Button startstop = (Button) findViewById(R.id.startStop);
 
-        if(startstop.getText().equals("Start"))
-        {
+        if (startstop.getText().equals("Start")) {
             startstop.setText("Stop");
             critterView.start();
-        }
-        else
-        {
+        } else {
             startstop.setText("Start");
             critterView.stop();
         }
     }
+    public void resetButtonClick(View view){
+        CritterView critterView = (CritterView) findViewById(R.id.CritterView);
+        Button startStopButton = (Button) findViewById(R.id.startStop);
+        critterView.clearCritters();
+        if (startStopButton.getText().equals("Stop")){
+            startStopButton.setText("Start");
+            critterView.stop();
+        }
+    }
+
 }

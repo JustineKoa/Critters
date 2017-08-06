@@ -49,6 +49,11 @@ public abstract class Critter {
         double close = Math.sqrt(Math.pow((critters.get(0).getX() - critter1.getX()),2) + Math.pow((critters.get(0).getY()-critter1.getY()),2));
         Critter closest = critters.get(0);
 
+        if(critters.size() == 1)
+        {
+            return closest;
+        }
+
         if (close == 0)
         {
             close = Math.sqrt(Math.pow((critters.get(1).getX() - critter1.getX()),2) + Math.pow((critters.get(1).getY()-critter1.getY()),2));
@@ -68,9 +73,21 @@ public abstract class Critter {
         return closest;
     }
 
+    public void checkBounds(double width, double height)
+    {
+        if(x<0 || x>width || y<0 || y>height)
+        {
+            java.util.Random random = new java.util.Random();
+            double xPos = (width) * random.nextDouble();
+            double ypos = (width) * random.nextDouble();
+            x = (int) xPos;
+            y = (int) ypos;
+        }
+    }
+
     /*
     * Method for how the Critter will react to the parameter Critter
     * */
-    public abstract void reactTo(Critter c);
+    public abstract void reactTo(Critter c, double width, double height);
 
 }

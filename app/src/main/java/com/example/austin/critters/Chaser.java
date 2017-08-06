@@ -16,7 +16,7 @@ public class Chaser extends Critter {
         super(x,y,color,length);
     }
 
-    public void reactTo(Critter C)
+    public void reactTo(Critter C, double width, double height)
     {
         double distancex = C.getX() - x;
         double distancey = C.getY()- y;
@@ -39,6 +39,9 @@ public class Chaser extends Critter {
             x -= 5;
             y += 5;
         }
+
+        checkBounds(width,height);
+
     }
 
 }

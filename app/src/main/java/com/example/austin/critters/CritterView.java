@@ -39,10 +39,13 @@ public class CritterView extends View implements View.OnTouchListener, Runnable{
         paint.setStyle(Paint.Style.FILL);
         paint.setColor(Color.WHITE);
         canvas.drawPaint(paint);
+        double canvasWidth = canvas.getWidth();
+        double canvasHeight = canvas.getHeight();
 
         for (Critter c : critterController.getCritters()) {
             canvas.drawRect(c.getX(), c.getY(), c.getX() + c.getLength(), c.getY() + c.getLength()
                     , c.getColor());
+            critterController.setCanvasBounds(canvasWidth,canvasHeight);
         }
     }
 
@@ -91,7 +94,9 @@ public class CritterView extends View implements View.OnTouchListener, Runnable{
         running = false;
     }
 
-
+    public void clearCritters(){
+        critterController.getCritters().clear();
+    }
     public void setCritter(int c){
         currentCritter = c;
     }
